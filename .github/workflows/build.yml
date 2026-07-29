@@ -50,6 +50,7 @@ jobs:
       CCACHE_MAXSIZE: '500M'
       CCACHE_BASEDIR: '${{ github.workspace }}'
     strategy:
+      fail-fast: false
       matrix:
         config:
           - name: "Windows Latest MSVC"
