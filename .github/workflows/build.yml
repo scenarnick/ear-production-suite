@@ -66,13 +66,13 @@ jobs:
             vcpkg_triplet: x64-windows-static
             test: true
           - name: "macOS Latest Clang x64"
-            os: macos-latest
+            os: macos-15-intel
             package: true
             cmake_preset: "macos-packaging-release"
             vcpkg_triplet: x64-osx-10_13
             test: true
           - name: "macOS Latest Clang arm64"
-            os: macos-latest
+            os: macos-15 
             package: true
             cmake_preset: "macos-arm64-packaging-release"
             vcpkg_triplet: arm64-osx-11_0
@@ -147,12 +147,12 @@ jobs:
           echo "${{ runner.workspace }}" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
 
       - name: 'macOS: Install ccache.'
-        if: matrix.config.os == 'macos-latest'
+        if: matrix.config.os == 'macos-15-intel' || matrix.config.os == 'macos-15'
         run: |
           brew install ccache
           
       - name: 'macOS: Install pkg-config.'
-        if: matrix.config.os == 'macos-latest'
+        if: matrix.config.os == 'macos-15-intel' || matrix.config.os == 'macos-15'
         run: |
           brew install pkg-config
 
